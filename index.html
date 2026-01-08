@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algeria Hotel Service</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; }
+        input { display: block; margin: 10px auto; padding: 10px; width: 80%; }
+        button { padding: 10px 20px; background: green; color: white; border: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h2>Hotel Service Request</h2>
+    <input type="text" id="room" placeholder="Room Number">
+    <input type="text" id="code" placeholder="Service Code (e.g. TOWEL)">
+    <button onclick="sendRequest()">Send Request</button>
+
+    <script>
+        async function sendRequest() {
+            const room = document.getElementById('room').value;
+            const code = document.getElementById('code').value;
+
+            // YOUR SAVED DATA REQUIREMENTS
+            const data = {
+                hotel_id: "DZ_HOTEL_01", 
+                room: room,
+                short_code: code
+            };
+
+            alert("Sending: " + JSON.stringify(data));
+            // We will add the Vercel-to-Render URL here in the next step
+        }
+    </script>
+</body>
+</html>
