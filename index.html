@@ -17,20 +17,32 @@
     <button onclick="sendRequest()">Send Request</button>
 
     <script>
-        async function sendRequest() {
-            const room = document.getElementById('room').value;
-            const code = document.getElementById('code').value;
+async function sendRequest() {
+    const room = document.getElementById("room").value;
+    const code = document.getElementById("code").value;
 
-            // YOUR SAVED DATA REQUIREMENTS
-            const data = {
-                hotel_id: "DZ_HOTEL_01", 
-                room: room,
-                short_code: code
-            };
+    const data = {
+        hotel_id: "DZ_HOTEL_01",
+        room: room,
+        short_code: code
+    };
 
-            alert("Sending: " + JSON.stringify(data));
-            // We will add the Vercel-to-Render URL here in the next step
-        }
+    try {
+        // REPLACE THE URL BELOW WITH YOUR ACTUAL RENDER LINK
+        const response = await fetch('https://your-service-name.onrender.com/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        alert("Success! Request sent to: " + result.data.responsible_staff);
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Failed to send request.");
+    }
+}
+
     </script>
 </body>
 </html>
